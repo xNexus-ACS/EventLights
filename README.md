@@ -1,3 +1,3 @@
 # OctoberLights
 
-Turns LCZ lights orange (Spooky)
+Turns all Lights orange (Spooky)
