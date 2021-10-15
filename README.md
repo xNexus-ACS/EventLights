@@ -1,2 +1,3 @@
 # OctoberLights
-EXILED 3.0 Plugin
+
+Turns LCZ lights orange (Spooky)
