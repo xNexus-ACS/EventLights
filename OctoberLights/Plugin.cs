@@ -26,7 +26,6 @@ namespace OctoberLights
         }
         public override void OnDisabled()
         {
-            Instance = null;
             events = null;
 
             ServerHandler.RoundStarted -= events.OnRoundStarted;
