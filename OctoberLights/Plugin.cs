@@ -1,35 +1,33 @@
 ﻿using Exiled.API.Features;
 using System;
-using ServerHandler = Exiled.Events.Handlers.Server;
+using EventLightsHandler = Exiled.Events.Handlers.Server;
 
 namespace OctoberLights
 {
     public class Plugin : Plugin<Cfg>
     {
         public static Plugin Instance;
-        public override string Author { get; } = "xNexus";
-        public override string Name { get; } = "October Lights";
-        public override string Prefix { get; } = "October Lights";
-        public override Version Version { get; } = new Version(1, 0, 0);
-        public override Version RequiredExiledVersion { get; } = new Version(3, 0, 5);
-        public OctoberLightsEvents events;
+        public override string Author { get; } = "xNexus-ACS";
+        public override string Name { get; } = "EventLights";
+        public override string Prefix { get; } = "event_lights";
+        public override Version Version { get; } = new Version(2, 0, 0);
+        public override Version RequiredExiledVersion { get; } = new Version(4, 2, 5);
+        public EventLightsEvents events;
 
         public override void OnEnabled()
         {
             Instance = this;
-            events = new OctoberLightsEvents();
-            Log.Info("OctoberLights Loaded, Enjoy Halloween");
+            events = new EventLightsEvents();
 
-            ServerHandler.RoundStarted += events.OnRoundStarted;
+            EventLightsHandler.RoundStarted += events.OnRoundStarted;
 
             base.OnEnabled();
         }
         public override void OnDisabled()
         {
+            EventLightsHandler.RoundStarted -= events.OnRoundStarted;
+
             events = null;
-
-            ServerHandler.RoundStarted -= events.OnRoundStarted;
-
             base.OnDisabled();
         }
     }
